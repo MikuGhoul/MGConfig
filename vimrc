@@ -13,7 +13,6 @@ set cursorcolumn			"高亮光标列
 set ai						"自动缩进
 set si						"智能缩进
 set cindent					"c/c++缩进
-hi Normal ctermbg=NONE
 "-----------------------bundle--------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -23,8 +22,35 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tomasr/molokai'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'majutsushi/tagbar'
+Plugin 'Valloric/YouCompleteMe'
+
 call vundle#end()            " required
 
 filetype plugin indent on    " required
 "-----------------------molokai-------------------------
 colorscheme molokai
+"-----------------------NERDTree------------------------
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif		"close vim if the only window left open is NERDTree
+"-----------------------vim-airline---------------------
+let g:airline_theme='cool'
+let g:airline#extensions#tabline#enabled = 1		"display all buffers when there's only tab open
+let g:airline_powerline_fonts = 1  
+"-----------------------Tagbar--------------------------
+let g:tagbar_autofocus = 1
+"autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
+autocmd BufRead * call tagbar#autoopen()
+"-----------------------YouCompleteMe-------------------
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/ycm_extra_config/.ycm_extra_conf.py'
+
+
+"-----------------------shortcuts-----------------------
+let mapleader=";"
+map gr :bn<CR>								"next buffer
+map Gr :bp<CR>								"previous buffer
+map <C-b> :NERDTreeToggle<CR>				"toggle NERDTree
+map <leader><Tab> :TagbarToggle<CR>			"toggle Tagbar window
