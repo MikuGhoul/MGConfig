@@ -21,7 +21,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -31,8 +31,10 @@ Plugin 'Valloric/YouCompleteMe'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
-"-----------------------molokai-------------------------
-colorscheme molokai
+"-----------------------solarized-----------------------
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
 "-----------------------NERDTree------------------------
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif		"close vim if the only window left open is NERDTree
