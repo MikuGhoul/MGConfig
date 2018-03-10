@@ -47,7 +47,7 @@ let g:tagbar_autofocus = 1
 "autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 autocmd BufRead * call tagbar#autoopen()
 "-----------------------YouCompleteMe-------------------
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/ycm_extra_config/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 
 "-----------------------shortcuts-----------------------
