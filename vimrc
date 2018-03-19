@@ -13,6 +13,13 @@ set cursorcolumn			"高亮光标列
 set ai						"自动缩进
 set si						"智能缩进
 set cindent					"c/c++缩进
+set scrolloff=7				"光标到buffer顶部/底部时保持7行距离
+set autoread				"文件在vim之外修改过，自动读入
+"set list 
+"set listchars=tab:→\ ,trail:·,precedes:«,extends:»,eol:¶
+"set listchars=tab:→\ ,trail:␣,extends:…,eol:⏎
+"set listchars=tab:‣\ ,trail:·,precedes:«,extends:»,eol:¬
+"set listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
 "-----------------------bundle--------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -27,6 +34,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()            " required
 
@@ -48,11 +56,28 @@ let g:tagbar_autofocus = 1
 autocmd BufRead * call tagbar#autoopen()
 "-----------------------YouCompleteMe-------------------
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+map <leader>c :YcmCompleter GoTo<CR>				"ycm跳转到声明或定义
+map <leader>d :YcmCompleter GoToDefinition<CR>		"ycm跳转到定义
 
+"-----------------------ctags---------------------------
+set tags=./tags;,tags
+"-----------------------tagbar--------------------------
+"-----------------------syntastic-----------------------
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_cpp_include_dirs = ['/usr/include']
+"let g:syntastic_error_symbol = '✗'
+"let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '∆'
+let g:syntastic_style_error_symbol = '✠'
+let g:syntastic_style_warning_symbol = '≈'
 
 "-----------------------shortcuts-----------------------
 let mapleader=";"
-map gr :bn<CR>								"next buffer
-map Gr :bp<CR>								"previous buffer
+map ge :bn<CR>								"next buffer
+map Ge :bp<CR>								"previous buffer
 map <C-b> :NERDTreeToggle<CR>				"toggle NERDTree
 map <leader><Tab> :TagbarToggle<CR>			"toggle Tagbar window
