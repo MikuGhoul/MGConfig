@@ -20,6 +20,12 @@ set autoread				"文件在vim之外修改过，自动读入
 "set listchars=tab:→\ ,trail:␣,extends:…,eol:⏎
 "set listchars=tab:‣\ ,trail:·,precedes:«,extends:»,eol:¬
 "set listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
+"inoremap ( ()<LEFT>			"括号自动补全
+"inoremap [ []<LEFT>
+"inoremap { {}<LEFT>
+
+
+
 "-----------------------bundle--------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -35,6 +41,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()            " required
 
@@ -58,6 +65,15 @@ autocmd BufRead * call tagbar#autoopen()
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 map <leader>c :YcmCompleter GoTo<CR>				"ycm跳转到声明或定义
 map <leader>d :YcmCompleter GoToDefinition<CR>		"ycm跳转到定义
+let g:ycm_key_invoke_completion = '<c-a>'			"ycm默认是ctrl+space手动开启补全 
+"自动开启补全，2个字符开始
+let g:ycm_semantic_triggers =  {
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
+
+
+
 
 "-----------------------ctags---------------------------
 set tags=./tags;,tags
