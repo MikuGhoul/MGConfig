@@ -24,28 +24,22 @@ set autoread				"文件在vim之外修改过，自动读入
 "inoremap [ []<LEFT>
 "inoremap { {}<LEFT>
 
+"======================================================
+" vim-plug
+"======================================================
+call plug#begin('~/.vim/plugged')
 
+"Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'majutsushi/tagbar'
+Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/syntastic'
+Plug 'jiangmiao/auto-pairs'
 
-"-----------------------bundle--------------------------
-set nocompatible              " be iMproved, required
-filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
+call plug#end()
 
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-"Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'majutsushi/tagbar'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'jiangmiao/auto-pairs'
-
-call vundle#end()            " required
-
-filetype plugin indent on    " required
 "-----------------------colorscheme-----------------------
 "set background=dark
 colorscheme desert
@@ -71,9 +65,6 @@ let g:ycm_semantic_triggers =  {
 			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
 			\ 'cs,lua,javascript': ['re!\w{2}'],
 			\ }
-
-
-
 
 "-----------------------ctags---------------------------
 set tags=./tags;,tags
