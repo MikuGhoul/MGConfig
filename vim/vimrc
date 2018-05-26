@@ -92,6 +92,7 @@ noremap <F7> :YcmDiags <CR>
 inoremap <F7> <ESC> :YcmDiags <CR>
 noremap <F8> :TagbarToggle <CR>
 inoremap <F8> <ESC> :TagbarToggle <CR>
+"map <leader><Tab> :TagbarToggle<CR>
 
 "-----------------------------------------------------------------
 "		nerdtree
@@ -148,4 +149,4 @@ let g:airline_powerline_fonts = 1
 "-----------------------------------------------------------------
 "		tagbar
 "-----------------------------------------------------------------
-autocmd BufEnter * call tagbar#autoopen(0)
+autocmd BufRead * call tagbar#autoopen(0)
