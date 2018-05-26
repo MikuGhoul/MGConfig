@@ -16,7 +16,13 @@ just for fun
     * add some lib in this file, and [note the order](https://github.com/Valloric/YouCompleteMe/issues/2885)
     ``` python
     # add this at `flags = []`
+    # linux
     '-isystem', '/usr/include/c++/7.3.1',	# maybe not 7.3.1, whatever
 	'-isystem', '/usr/local/include',
     '-isystem', '/usr/include,
+    ```
+    ``` python
+    # windows
+    '-isystem', 'D:/Software/MinGW/include/c++',
+    '-isystem', 'D:/Software/MinGW/include',
     ```
