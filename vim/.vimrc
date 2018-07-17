@@ -75,6 +75,7 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
 
 
 call plug#end()
@@ -107,28 +108,28 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "-----------------------------------------------------------------
 "		ycm
 "-----------------------------------------------------------------
-if isWindows == 1
-	let g:ycm_global_ycm_extra_conf = '$VIM/vim81/plugged/.ycm_extra_conf.py'
-else
-	let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-endif
-
-map <leader>c :YcmCompleter GoTo<CR>				"ycm跳转到声明或定义
-map <leader>d :YcmCompleter GoToDefinition<CR>		"ycm跳转到定义
-let g:ycm_key_invoke_completion = '<c-a>'			"ycm默认是ctrl+space手动开启补全
-
-let g:ycm_semantic_triggers =  {
-			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-			\ 'cs,lua,javascript': ['re!\w{2}'],
-			\ }
-
+"if isWindows == 1
+"	let g:ycm_global_ycm_extra_conf = '$VIM/vim81/plugged/.ycm_extra_conf.py'
+"else
+"	let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"endif
+"
+"map <leader>c :YcmCompleter GoTo<CR>				"ycm跳转到声明或定义
+"map <leader>d :YcmCompleter GoToDefinition<CR>		"ycm跳转到定义
+"let g:ycm_key_invoke_completion = '<c-a>'			"ycm默认是ctrl+space手动开启补全
+"
+"let g:ycm_semantic_triggers =  {
+"			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+"			\ 'cs,lua,javascript': ['re!\w{2}'],
+"			\ }
+"
 "-----------------------------------------------------------------
 "		syntastic
 "-----------------------------------------------------------------
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1                     "打开文件时检查
-let g:syntastic_check_on_wq = 0                       "保存文件后检查
+"let g:syntastic_check_on_open = 1            "打开文件时检查,与ctrlfunny冲突
+let g:syntastic_check_on_wq = 0               "保存文件后检查
 let g:syntastic_cpp_auto_refresh_includes = 1
 "let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
@@ -154,3 +155,11 @@ let g:airline_powerline_fonts = 1
 "		tagbar
 "-----------------------------------------------------------------
 autocmd BufRead * call tagbar#autoopen(0)
+"-----------------------------------------------------------------
+"		ctrlp-funky
+"-----------------------------------------------------------------
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_syntax_highlight = 1
