@@ -71,7 +71,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/syntastic'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
@@ -92,7 +92,11 @@ noremap <F7> :YcmDiags <CR>
 inoremap <F7> <ESC> :YcmDiags <CR>
 noremap <F8> :TagbarToggle <CR>
 inoremap <F8> <ESC> :TagbarToggle <CR>
-"map <leader><Tab> :TagbarToggle<CR>
+noremap <F9> <ESC> :lclose <CR>
+inoremap <F9> <ESC> :lclose <CR>
+noremap <F10> <ESC> :Errors <CR>
+inoremap <F10> <ESC> :Errors <CR>
+
 
 "-----------------------------------------------------------------
 "		nerdtree
