@@ -14,7 +14,7 @@ set hlsearch                "高亮查找的句子
 set incsearch               "查找时逐字高亮
 set showmatch               "显示括号匹配
 set cursorline              "高亮光标行
-set cursorcolumn            "高亮光标列
+"set cursorcolumn            "高亮光标列
 set gcr=a:block-blinkon0    "光标不闪烁
 set autoindent              "自动缩进
 set smartindent             "智能缩进
@@ -54,7 +54,9 @@ if (has("gui_running"))
 	"autocmd GUIEnter * simalt ~x
 else
 	let g:isGui = 0
-	colorscheme slate
+	colorscheme desert
+	highlight CursorLine cterm=NONE ctermbg=blue ctermfg=white guibg=blue guifg=white
+	highlight Search cterm=NONE ctermbg=Darkblue ctermfg=green guibg=Darkblue guifg=green
 endif
 
 
@@ -102,8 +104,12 @@ inoremap <F10> <ESC> :Errors <CR>
 "-----------------------------------------------------------------
 "		nerdtree
 "-----------------------------------------------------------------
-autocmd vimenter * NERDTree
+autocmd VimEnter * NERDTree
+if !empty(expand('%:t:r'))
+	autocmd VimEnter * wincmd w
+endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif		"close vim if the only window left open is NERDTree
+let NERDTreeNodeDelimiter = "\t"
 
 "-----------------------------------------------------------------
 "		ycm
@@ -154,7 +160,7 @@ let g:airline_powerline_fonts = 1
 "-----------------------------------------------------------------
 "		tagbar
 "-----------------------------------------------------------------
-autocmd BufRead * call tagbar#autoopen(0)
+" autocmd BufRead * call tagbar#autoopen(0)
 "-----------------------------------------------------------------
 "		ctrlp-funky
 "-----------------------------------------------------------------
