@@ -55,8 +55,8 @@ if (has("gui_running"))
 else
 	let g:isGui = 0
 	colorscheme desert
-	highlight CursorLine cterm=NONE ctermbg=blue ctermfg=white guibg=blue guifg=white
-	highlight Search cterm=NONE ctermbg=Darkblue ctermfg=green guibg=Darkblue guifg=green
+	highlight CursorLine cterm=NONE ctermbg=LightRed ctermfg=DarkRed guibg=LightRed guifg=DarkRed
+	highlight Search cterm=NONE ctermbg=DarkBlue ctermfg=LightYellow guibg=DarkBlue guifg=LightYellow
 endif
 
 
