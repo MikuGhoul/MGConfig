@@ -79,6 +79,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'lfv89/vim-interestingwords'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -102,10 +103,10 @@ inoremap <F10> <ESC> :Errors <CR>
 noremap <F12> <ESC> :SyntasticToggleMode<CR>              "toggle syntastic
 inoremap <F12> <ESC> :SyntasticToggleMode<CR>             "F11 is full screen, so...
 noremap <leader>ts :ts <CR>                               "when you use ctrl-]
-noremap <leader>cw :cw <CR>                               "for quickfix, when use make or vimgrep
-noremap <leader>cn :cn <CR>                               "goto next quickfix list
-noremap <leader>cp :cp <CR>                               "goto previous quickfix list
-noremap <leader>ccl :ccl <CR>                             "close quickfix window
+"noremap <leader>cw :cw <CR>                               "for quickfix, when use make or vimgrep
+"noremap <leader>cn :cn <CR>                               "goto next quickfix list
+"noremap <leader>cp :cp <CR>                               "goto previous quickfix list
+"noremap <leader>ccl :ccl <CR>                             "close quickfix window
 
 
 
@@ -143,7 +144,7 @@ let NERDTreeNodeDelimiter = "\t"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1            "打开文件时检查,与ctrlfunny冲突
-let g:syntastic_check_on_wq = 0               "保存文件后检查
+"let g:syntastic_check_on_wq = 0               "保存文件后检查
 let g:syntastic_enable_highlighting=1         "highlight
 let g:syntastic_cpp_auto_refresh_includes = 1
 let g:syntastic_error_symbol = '✗'
