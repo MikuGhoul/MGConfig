@@ -54,7 +54,6 @@ if (has("gui_running"))
 	"autocmd GUIEnter * simalt ~x
 else
 	let g:isGui = 0
-	colorscheme desert
 	highlight CursorLine cterm=NONE ctermbg=LightRed ctermfg=DarkRed guibg=LightRed guifg=DarkRed
 	highlight Search cterm=NONE ctermbg=DarkBlue ctermfg=LightYellow guibg=DarkBlue guifg=LightYellow
 endif
@@ -113,7 +112,7 @@ noremap <leader>ts :ts <CR>                               "when you use ctrl-]
 "-----------------------------------------------------------------
 "		nerdtree
 "-----------------------------------------------------------------
-autocmd VimEnter * NERDTree
+"autocmd VimEnter * NERDTree
 if !empty(expand('%:t:r'))
 	autocmd VimEnter * wincmd w
 endif
