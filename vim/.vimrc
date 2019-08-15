@@ -53,8 +53,9 @@ if (has("gui_running"))
 	set guioptions-=L       "remove left-hand scroll bar
 	"autocmd GUIEnter * simalt ~x
 else
-	let g:isGui = 0
 	"colorscheme desert
+	set guioptions-=m       "remove menu bar
+	let g:isGui = 0
 	highlight CursorLine cterm=NONE ctermbg=LightRed ctermfg=DarkRed guibg=LightRed guifg=DarkRed
 	highlight Search cterm=NONE ctermbg=DarkBlue ctermfg=LightYellow guibg=DarkBlue guifg=LightYellow
 endif
@@ -186,3 +187,11 @@ nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
 
 nnoremap <silent> n :call WordNavigation('forward')<cr>
 nnoremap <silent> N :call WordNavigation('backward')<cr>
+
+"-----------------------------------------------------------------
+"		vim-interestingword
+"-----------------------------------------------------------------
+"hi EasyMotionTarget ctermbg=none ctermfg=red
+"hi EasyMotionShade  ctermbg=none ctermfg=blue
+hi EasyMotionTarget2First ctermbg=none ctermfg=red
+hi EasyMotionTarget2Second ctermbg=none ctermfg=darkblue
