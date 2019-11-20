@@ -22,7 +22,7 @@ set cindent                 "c/c++缩进
 set scrolloff=7             "光标到buffer顶部/底部时保持7行距离
 set autoread                "文件在vim之外修改过，自动读入
 set backspace=2             "设置退格键可用
-set mouse=a                 "使用鼠标
+"set mouse=a                 "使用鼠标
 set history=74              "历史纪录74条
 set encoding=utf-8
 

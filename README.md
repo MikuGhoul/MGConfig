@@ -5,7 +5,10 @@ just for fun
 * What i really need
     * `+ clipboard` function
 * Dependencies
-    * liblua5.1-dev luajit libluajit-5.1  python3-dev ruby-dev   libx11-dev libxmu-dev libxi-dev
+    * Ubuntu
+		* liblua5.1-dev luajit libluajit-5.1  python3-dev ruby-dev   libx11-dev libxmu-dev libxi-dev
+    * Centos
+		* luajit-devel luajit lua-devel python3-dev ruby-dev xorg-x11-server-devel libX11-devel libXt-devel
 * `git clone  https://github.com/vim/vim.git`
 * config command
     ```
