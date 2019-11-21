@@ -175,7 +175,6 @@ set tags=./tags;,tags
 "		cscope
 "-----------------------------------------------------------------
 " cscope -Rbqk 		"generate cscope.out cscope.in.out cscope.po.out
-set tags=./tags;,tags
 
 "-----------------------------------------------------------------
 "		airline
