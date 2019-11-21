@@ -22,7 +22,7 @@ set cindent                 "c/c++缩进
 set scrolloff=7             "光标到buffer顶部/底部时保持7行距离
 set autoread                "文件在vim之外修改过，自动读入
 set backspace=2             "设置退格键可用
-"set mouse=a                 "使用鼠标
+set mouse=                  "
 set history=74              "历史纪录74条
 set encoding=utf-8
 
@@ -46,7 +46,7 @@ endif
 if (has("gui_running"))
 	let g:isGui = 1
 
-	colorscheme artesanal
+	colorscheme slate
 	set guioptions-=m       "remove menu bar
 	set guioptions-=T       "remove toolbar
 	set guioptions-=r       "remove right-hand scroll bar
@@ -103,11 +103,22 @@ noremap <F10> <ESC> :Errors <CR>
 inoremap <F10> <ESC> :Errors <CR>
 noremap <F12> <ESC> :SyntasticToggleMode<CR>              "toggle syntastic
 inoremap <F12> <ESC> :SyntasticToggleMode<CR>             "F11 is full screen, so...
-noremap <leader>ts :ts <CR>                               "when you use ctrl-]
 "noremap <leader>cw :cw <CR>                               "for quickfix, when use make or vimgrep
 "noremap <leader>cn :cn <CR>                               "goto next quickfix list
 "noremap <leader>cp :cp <CR>                               "goto previous quickfix list
 "noremap <leader>ccl :ccl <CR>                             "close quickfix window
+noremap <leader>ts :ts <CR>                               "list the tags
+
+noremap <F5> :cscope add cscope.out <CR>
+noremap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+noremap <leader>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+noremap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>a :cs find a <C-R>=expand("<cword>")<CR><CR>
 
 
 
@@ -157,6 +168,13 @@ let g:airline#extensions#syntastic#enabled = 1
 "-----------------------------------------------------------------
 "		ctags
 "-----------------------------------------------------------------
+" ctags -R .  		"generate tags file
+set tags=./tags;,tags
+
+"-----------------------------------------------------------------
+"		cscope
+"-----------------------------------------------------------------
+" cscope -Rbqk 		"generate cscope.out cscope.in.out cscope.po.out
 set tags=./tags;,tags
 
 "-----------------------------------------------------------------
@@ -164,12 +182,13 @@ set tags=./tags;,tags
 "-----------------------------------------------------------------
 let g:airline_theme='cool'
 let g:airline#extensions#tabline#enabled = 1		"display all buffers when there's only tab open
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 
 "-----------------------------------------------------------------
 "		tagbar
 "-----------------------------------------------------------------
 " autocmd BufRead * call tagbar#autoopen(0)
+
 "-----------------------------------------------------------------
 "		ctrlp-funky
 "-----------------------------------------------------------------
