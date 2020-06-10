@@ -81,6 +81,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'lfv89/vim-interestingwords'
 Plug 'easymotion/vim-easymotion'
+Plug 'fatih/vim-go', { 'tag' : '*' }
+Plug 'dgryski/vim-godef'
 
 call plug#end()
 
@@ -108,19 +110,6 @@ inoremap <F12> <ESC> :SyntasticToggleMode<CR>             "F11 is full screen, s
 "noremap <leader>cp :cp <CR>                               "goto previous quickfix list
 "noremap <leader>ccl :ccl <CR>                             "close quickfix window
 noremap <leader>ts :ts <CR>                               "list the tags
-
-noremap <F5> :cscope add cscope.out <CR>
-noremap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-noremap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-noremap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-noremap <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-noremap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-noremap <leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-noremap <leader>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-noremap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-noremap <leader>a :cs find a <C-R>=expand("<cword>")<CR><CR>
-
-
 
 "-----------------------------------------------------------------
 "		nerdtree
@@ -175,6 +164,19 @@ set tags=./tags;,tags
 "		cscope
 "-----------------------------------------------------------------
 " cscope -Rbqk 		"generate cscope.out cscope.in.out cscope.po.out
+if filereadable("cscope.out")
+	cscope add cscope.out
+endif
+noremap <F5> :cscope add cscope.out <CR>
+noremap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+noremap <leader>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+noremap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>a :cs find a <C-R>=expand("<cword>")<CR><CR>
 
 "-----------------------------------------------------------------
 "		airline
@@ -213,3 +215,9 @@ nnoremap <silent> N :call WordNavigation('backward')<cr>
 "hi EasyMotionShade  ctermbg=none ctermfg=blue
 hi EasyMotionTarget2First ctermbg=none ctermfg=red
 hi EasyMotionTarget2Second ctermbg=none ctermfg=darkblue
+
+"-----------------------------------------------------------------
+"		vim-godef
+"-----------------------------------------------------------------
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
