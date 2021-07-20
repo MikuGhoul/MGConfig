@@ -8,6 +8,7 @@ set number                  "显示行号
 set relativenumber          "相对行号
 set ruler                   "右下显示光标位置
 set tabstop=4               "tab键4个空格
+set expandtab               "把tab转为space
 set shiftwidth=4            "当前行之间交错时使用4空格
 set ignorecase              "设置默认查找大小写不敏感
 set hlsearch                "高亮查找的句子
@@ -19,12 +20,13 @@ set gcr=a:block-blinkon0    "光标不闪烁
 set autoindent              "自动缩进
 set smartindent             "智能缩进
 set cindent                 "c/c++缩进
-set scrolloff=7             "光标到buffer顶部/底部时保持7行距离
+set scrolloff=1             "光标到buffer顶部/底部时保持1行距离
 set autoread                "文件在vim之外修改过，自动读入
 set backspace=2             "设置退格键可用
 set mouse=                  "
 set history=74              "历史纪录74条
 set encoding=utf-8
+set t_Co=256
 
 "set noerrorbells           "关闭错误提示音
 "set background=dark        "黑色背景
@@ -57,9 +59,14 @@ else
 	set guioptions-=m       "remove menu bar
 	let g:isGui = 0
 	highlight CursorLine cterm=NONE ctermbg=LightRed ctermfg=DarkRed guibg=LightRed guifg=DarkRed
-	highlight Search cterm=NONE ctermbg=DarkBlue ctermfg=LightYellow guibg=DarkBlue guifg=LightYellow
+	highlight Search cterm=NONE ctermbg=DarkBlue ctermfg=Yellow guibg=DarkBlue guifg=LightYellow
+	" highlight CursorLine cterm=NONE ctermbg=Black ctermfg=DarkRed guibg=LightRed guifg=DarkRed ""
 endif
 
+"-----------------------------------------------------------------
+"		python config
+"-----------------------------------------------------------------
+autocmd FileType python set expandtab
 
 "-----------------------------------------------------------------
 "		vim-plug
@@ -77,7 +84,8 @@ Plug 'majutsushi/tagbar'
 "Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/syntastic'
 Plug 'jiangmiao/auto-pairs'
-Plug 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'lfv89/vim-interestingwords'
 Plug 'easymotion/vim-easymotion'
@@ -103,8 +111,7 @@ noremap <F9> <ESC> :lclose <CR>                           "close syntastic windo
 inoremap <F9> <ESC> :lclose <CR>
 noremap <F10> <ESC> :Errors <CR>
 inoremap <F10> <ESC> :Errors <CR>
-noremap <F12> <ESC> :SyntasticToggleMode<CR>              "toggle syntastic
-inoremap <F12> <ESC> :SyntasticToggleMode<CR>             "F11 is full screen, so...
+noremap <F12> <ESC> :SyntasticToggleMode<CR>
 "noremap <leader>cw :cw <CR>                               "for quickfix, when use make or vimgrep
 "noremap <leader>cn :cn <CR>                               "goto next quickfix list
 "noremap <leader>cp :cp <CR>                               "goto previous quickfix list
@@ -191,6 +198,15 @@ let g:airline#extensions#tabline#enabled = 1		"display all buffers when there's 
 " autocmd BufRead * call tagbar#autoopen(0)
 
 "-----------------------------------------------------------------
+"		ctrlpvim/ctrlp.vim
+"-----------------------------------------------------------------
+"let g:ctrlp_custom_ignore = {
+"  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+"  \ 'file': '\v\.(exe|so|dll)$',
+"  \ }
+let g:ctrlp_user_command = 'find %s -type f -not -path "**/.git"/**'
+
+"-----------------------------------------------------------------
 "		ctrlp-funky
 "-----------------------------------------------------------------
 nnoremap <Leader>fu :CtrlPFunky<Cr>
@@ -221,3 +237,4 @@ hi EasyMotionTarget2Second ctermbg=none ctermfg=darkblue
 "-----------------------------------------------------------------
 let g:go_def_mode = 'gopls'
 let g:go_info_mode = 'gopls'
+let g:godef_same_file_in_same_window = 1
